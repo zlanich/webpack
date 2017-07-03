@@ -1,25 +1,18 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    {{#router}}
     <router-view></router-view>
-    {{else}}
-    <hello></hello>
-    {{/router}}
   </div>
 </template>
 
-<script>
-{{#unless router}}
-import Hello from './components/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+<script lang="ts">
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
 
-{{/unless}}
-export default {
-  name: 'app'{{#router}}{{#if_eq lintConfig "airbnb"}},{{/if_eq}}{{else}},
-  components: {
-    Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}{{/router}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+@Component
+export default class App extends Vue {
+  name: string = 'app'
+}
 </script>
 
 <style>
